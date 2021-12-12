@@ -1,0 +1,22 @@
+{
+	"products": {
+		"clothing": {
+			"tops": {
+				"shortsleeve": {
+					"Classic-T": "classic-t",
+					"V-Neck": "v-neck",
+					"Tank": "tank"
+				},
+				"longsleeve": {
+					"hoodies": {
+						"Pullover": "pullover",
+						"Zip-Up": "zip-up"
+					},
+                    "sweatshirts": {
+                        "Lightweight": "lightweight"
+                    }
+				}
+			}
+		}
+	}
+}
