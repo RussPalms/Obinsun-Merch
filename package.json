@@ -7,14 +7,23 @@
   },
   "dependencies": {
     "@loadable/component": "^5.15.0",
+    "@next-auth/firebase-adapter": "^0.1.2-pr.183-76202b42.8",
+    "@reduxjs/toolkit": "^1.7.1",
+    "bcryptjs": "^2.4.3",
+    "firebase": "^9.6.1",
+    "firebase-admin": "^10.0.1",
     "next": "latest",
+    "next-auth": "^4.0.5",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-redux": "^7.2.6"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
     "postcss": "^8.3.5",
     "tailwindcss": "^2.2.4",
+    "tailwindcss-nth-child": "^0.0.6",
     "tailwindcss-pseudo-elements": "^2.0.0"
   }
 }

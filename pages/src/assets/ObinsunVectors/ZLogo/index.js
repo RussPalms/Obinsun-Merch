@@ -1,4 +1,4 @@
-const Grim2021 = ({ className }) => {
+const ZLogo = ({ className }) => {
 	return (
 		<>
 			<svg
@@ -23,4 +23,4 @@ const Grim2021 = ({ className }) => {
 	);
 };
 
-export default Grim2021;
+export default ZLogo;

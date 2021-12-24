@@ -78,263 +78,262 @@ import SpookyPals from "../assets/ObinsunVectors/SpookyPals";
 function Designs({ id }) {
 	return (
 		<>
-			<div className="bg-gray-500 flex flex-col items-center justify-center h-screen">
-				<h1 className="font-grandstander text-9xl absolute top[50%] z-0">
+			<div className="bg-gray-500 flex items-center justify-center h-full w-full">
+				{/* <h1 className="font-grandstander text-9xl absolute top[50%] z-0">
 					Obinsun Designs
-				</h1>
+				</h1> */}
 
-				<div className="relative grid grid-cols-4 h-full w-full m-auto justify-items-center items-center z-1">
-					{/* <CatsAndSkullsPatternBanner  name="cats_and_skulls_pattern" className="h-32 w-32 object-fill" />
-			<Grim2021  name="grim_2021" className="h-32 w-32 object-fill" /> */}
+				<div className="relative grid grid-cols-5 h-full w-full justify-items-center">
+					{/* <CatsAndSkullsPatternBanner
+						name="cats_and_skulls_pattern"
+						className="h-32 w-32 object-fill"
+					/>
+					<Grim2021
+						name="grim_2021"
+						className="h-32 w-32 object-fill"
+					/> */}
 
 					{/* Monocolor (White) No Text*/}
-					<DeathRidesABlackCat
-						//
-						name="death_rides_black_cat"
-						className="asset"
-					/>
-					<YoCult
-						//
-						name="yo_cult"
-						className="asset"
-					/>
-					<NineLives
-						//
-						name="nine_lives"
-						className="asset"
-					/>
-					<DoomCat
-						//
-						name="doom_cat"
-						className="asset"
-					/>
-					<CatsAndSkullsPattern
-						//
-						name="cats_and_skulls_pattern"
-						className="asset"
-					/>
+					<li className="design-container glass border-top-left-glass">
+						<DeathRidesABlackCat
+							name="death_rides_black_cat"
+							className="asset"
+						/>
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<YoCult name="yo_cult" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<NineLives name="nine_lives" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<DoomCat name="doom_cat" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<CatsAndSkullsPattern
+							name="cats_and_skulls_pattern"
+							className="asset"
+						/>
+					</li>
 
 					{/* Monocolor Text */}
-					<CatGotYourSoul
-						//
-						name="cat_got_your_soul"
-						className="asset"
-					/>
-					<GhostOfDisapproval
-						//
-						name="ghost_of_disapproval"
-						className="asset"
-					/>
-					<CatPerson
-						//
-						name="cat_person"
-						className="asset"
-					/>
-					<GhostBoobs
-						//
-						name="ghost_boobs"
-						className="asset"
-					/>
-					<ThisIsWhyWeCantHaveNiceThings
-						//
-						name="this_is_why_we_cant_have_nice_things"
-						className="asset"
-					/>
+					<li className="design-container glass border-top-left-glass">
+						<CatGotYourSoul
+							name="cat_got_your_soul"
+							className="asset"
+						/>
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<GhostOfDisapproval
+							name="ghost_of_disapproval"
+							className="asset"
+						/>
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<CatPerson name="cat_person" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<GhostBoobs name="ghost_boobs" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<ThisIsWhyWeCantHaveNiceThings
+							name="this_is_why_we_cant_have_nice_things"
+							className="asset"
+						/>
+					</li>
 
 					{/* Monocolor (Not White) Text*/}
-					<CatsMetal
-						//
-						name="cats_metal"
-						className="asset"
-					/>
-					<RadCat
-						//
-						name="rad_cat"
-						className="asset"
-					/>
-					<UFWhoa
-						//
-						name="u_f_whoa"
-						className="asset"
-					/>
+					<li className="design-container glass border-top-left-glass">
+						<CatsMetal name="cats_metal" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<RadCat name="rad_cat" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<UFWhoa name="u_f_whoa" className="asset" />
+					</li>
 
 					{/* Duocolor (Black & White) No Text */}
-					<WhiskersAndPipe
-						//
-						name="whiskers_and_pipe"
-						className="asset"
-					/>
-					<GrimKitty
-						//
-						name="grim_kitty"
-						className="asset"
-					/>
-					<RadInPeace
-						//
-						name="rad_in_peace"
-						className="asset"
-					/>
-					<MetalCat
-						//
-						name="metal_cat"
-						className="asset"
-					/>
-					<SpookyCat
-						//
-						name="spooky_cat"
-						className="asset"
-					/>
-					<ReaperCat
-						//
-						name="reaper_cat"
-						className="asset"
-					/>
+					<li className="design-container glass border-top-left-glass">
+						<WhiskersAndPipe
+							name="whiskers_and_pipe"
+							className="asset"
+						/>
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<GrimKitty name="grim_kitty" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<RadInPeace name="rad_in_peace" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<MetalCat name="metal_cat" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<SpookyCat name="spooky_cat" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<ReaperCat name="reaper_cat" className="asset" />
+					</li>
 
 					{/* Duocolor (Black & White) Text */}
-					<BlackBearMetal
-						//
-						name="black_bear_metal"
-						className="asset"
-					/>
-					<Dogtor
-						//
-						name="dogtor"
-						className="asset"
-					/>
+					<li className="design-container glass border-top-left-glass">
+						<BlackBearMetal
+							name="black_bear_metal"
+							className="asset"
+						/>
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<Dogtor name="dogtor" className="asset" />
+					</li>
 
 					{/* Duocolor (Not Black & White) No Text*/}
-					<DeathIsACatPerson
-						//
-						name="death_is_a_cat_person"
-						className="asset"
-					/>
-					<DreamingOfDestruction
-						//
-						name="dreaming_of_destruction"
-						className="asset"
-					/>
+					<li className="design-container glass border-top-left-glass">
+						<DeathIsACatPerson
+							name="death_is_a_cat_person"
+							className="asset"
+						/>
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<DreamingOfDestruction
+							name="dreaming_of_destruction"
+							className="asset"
+						/>
+					</li>
 
 					{/* Duocolor (Black & White) Text */}
-					<HotDog
-						//
-						name="hot_dog"
-						className="asset"
-					/>
-					<CutMeSomeSlacks
-						//
-						name="cut_me_some_slacks"
-						className="asset"
-					/>
+					<li className="design-container glass border-top-left-glass">
+						<HotDog name="hot_dog" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<CutMeSomeSlacks
+							name="cut_me_some_slacks"
+							className="asset"
+						/>
+					</li>
 
 					{/* Tricolor No Text */}
-					<DeathsLittleHelpers
-						//
-						name="deaths_little_helpers"
-						className="asset"
-					/>
-					<PeaceOnEarth
-						//
-						name="peace_on_earth"
-						className="asset"
-					/>
-					<ThunderClap
-						//
-						name="thunder_clap"
-						className="asset"
-					/>
+					<li className="design-container glass border-top-left-glass">
+						<DeathsLittleHelpers
+							name="deaths_little_helpers"
+							className="asset"
+						/>
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<PeaceOnEarth name="peace_on_earth" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<ThunderClap name="thunder_clap" className="asset" />
+					</li>
 
 					{/* Tricolor Text */}
-					<HomeBodies
-						//
-						name="home_bodies"
-						className="asset"
-					/>
+					<li className="design-container glass border-top-left-glass">
+						<HomeBodies name="home_bodies" className="asset" />
+					</li>
 
 					{/* Teracolor No Text */}
-					<DraculaVisitsAfrica
-						//
-						name="dracula_visits_africa"
-						className="asset"
-					/>
-					<EnlightenedSkull
-						//
-						name="enlightened_skull"
-						className="asset"
-					/>
+					<li className="design-container glass border-top-left-glass">
+						<DraculaVisitsAfrica
+							name="dracula_visits_africa"
+							className="asset"
+						/>
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<EnlightenedSkull
+							name="enlightened_skull"
+							className="asset"
+						/>
+					</li>
 
 					{/* Teracolor Text */}
-					<GoodMorningCoffeeWizard
-						//
-						name="good_morning_coffee_wizard"
-						className="asset"
-					/>
-					<LobsterPlusCrab
-						//
-						name="lobster_plus_crab"
-						className="asset"
-					/>
-					<WitchCrafts
-						//
-						name="witch_crafts"
-						className="asset"
-					/>
+					<li className="design-container glass border-top-left-glass">
+						<GoodMorningCoffeeWizard
+							name="good_morning_coffee_wizard"
+							className="asset"
+						/>
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<LobsterPlusCrab
+							name="lobster_plus_crab"
+							className="asset"
+						/>
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<WitchCrafts name="witch_crafts" className="asset" />
+					</li>
 
 					{/* Pentacolor No Text */}
-					<PizzaWizzard
-						//
-						name="pizza_wizzard"
-						className="asset"
-					/>
-					<StayFresh
-						//
-						name="stay_fresh"
-						className="asset"
-					/>
+					<li className="design-container glass border-top-left-glass">
+						<PizzaWizzard name="pizza_wizzard" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<StayFresh name="stay_fresh" className="asset" />
+					</li>
 
 					{/* Multicolor No Text */}
-					<SkullIsFullOfCats
-						//
-						name="skull_is_full_of_cats"
-						className="asset"
-					/>
+					<li className="design-container glass border-top-left-glass">
+						<SkullIsFullOfCats
+							name="skull_is_full_of_cats"
+							className="asset"
+						/>
+					</li>
 
 					{/* Rainbow No Text */}
-					<RadRex
-						//
-						name="rad_rex"
-						className="asset"
-					/>
-					<Unicorns
-						//
-						name="unicorns"
-						className="asset"
-					/>
-					<CatStuff
-						//
-						name="cat_stuff"
-						className="asset"
-					/>
-					<CoolestCat
-						//
-						name="coolest_cat"
-						className="asset"
-					/>
-					<SeeYouInSpace
-						//
-						name="see_you_in_space"
-						className="asset"
-					/>
+					<li className="design-container glass border-top-left-glass">
+						<RadRex name="rad_rex" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<Unicorns name="unicorns" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<CatStuff name="cat_stuff" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<CoolestCat name="coolest_cat" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<SeeYouInSpace
+							name="see_you_in_space"
+							className="asset"
+						/>
+					</li>
+
 					{/* Rainbow Text */}
-					<RadPals
-						//
-						name="rad_pals"
-						className="asset"
-					/>
-					<SpookyPals
-						//
-						name="spooky_cat"
-						className="asset"
-					/>
+					<li className="design-container glass border-top-left-glass">
+						<RadPals name="rad_pals" className="asset" />
+					</li>
+
+					<li className="design-container glass border-top-left-glass">
+						<SpookyPals name="spooky_cat" className="asset" />
+					</li>
 				</div>
 			</div>
 		</>

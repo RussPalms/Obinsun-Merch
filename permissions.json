@@ -1,0 +1,12 @@
+{
+	"type": "service_account",
+	"project_id": "obinsun-merch",
+	"private_key_id": "900ae4034d484c7be5510747d1a871ffecde572d",
+	"private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCsWLxEAtikbixD\n88OajVnrm4keMCpXdTg5J1Qm6EQwY8sPipxkcTomzNxHcy9C834L3ytzRIr8r6Eq\nCKWbeOFNvauUK68ClkokVoYUNY7kmp7OU1X7lTNlg64SyI630PYQDiCWCXp7sLBi\n5u3wwSqwV2puMl7Rdc0fjF3ASgXs45q5Irbk6ptNrbLJla2DpKEohl6bT4C0WBIs\n7B5SAhQqgtHhTq5W6YkaC1cLOCfSFnWL3745JD2uKY5twnkUfYvhKzM23G9+6u2t\nOCzDFfzqthl1xsqHik2G3s2S5azpEa+omOdLtr8+kbops+7Kk0JFFGH2/EQ+JsQg\n9N5fPS2bAgMBAAECggEAR0AwJRXgJqp9lmIynbSOVj9pApf7CUkmw0olGiiv+Clp\ni7VMTqIY3m2XK9rM0SsFEzdiKTdPFoQtZslIXewtiQw+4PTmV3V2lWtH5xb1SkE6\nIiaFx4q5QuCbmJxdlFTJRX3xrtWgU36KjXjXKc9SLLEXCRO9625+LOrE33g61uHc\nJ8Bu+cQJSoDQF5QrhT4f2hdP7+s/HFMYBZ2fxbolay6aZfUEnfeAwykfYY1FWfhC\nuWwmHvQ9KOkw7OVBT9HprKRgR1Bh/oInRaedAu2nGggPiKIIRj4rDgG7+olEO6Mi\nNLvutN69X2jbkdr00eMnmGfoTPkildfkAW8Qxlfb4QKBgQDUHDGZ2iB9GuU7Bq4t\nPC3jsRaA7rvJ3PUA8SWEnaEONd7RwBEXDlJGREf2HHb7U6sH5E+j8ISgK7LnTAdH\n1fncKMEaYi7N5FC+q8q53G7ieaBIHTW2sNvcARNJeX5y2el2mK5V8KYjXPL0UMUq\nW1X6Cf2E7yEs014K2s8a6JqzaQKBgQDQAjTL1tAPgpqPmxq4j3v7sWIz90QvaMx9\nyoJs2U4KKDrNzSdX8yfWIdgkOoHXQX+yzWMEsVRPGCngDJo71dmsXs221T0pbanV\nIedFyc8z6wleXnd7bigviDTUgQ+064q8P2J5w7QpYcdV+CosdJs+aI+D4mguk2iT\nivEm3j3sYwKBgFMixdIuq6M9YnGTObujJb1j0JUyfUoun50B55mmCtU+ChqeNFSc\nGWVPKAFvwLbbYWLTet+fyuvYlOORah0e4jMHikBkEUJD5d4GCYx1uMRttYPuZvo3\nMcV2am/W/dfYT2hbiaFHlGax7MwTyGPErts1BTgQXilqoyaQArLiTphZAoGAONXR\nfTzlvsct2j1EMNerxdry/UX70IRvE5PozTsXErlpT+BVdreO0/iNaWC/J4TTEpUC\nED8vzSjKEFkBL4ZAItQIm4NqYc6AECdiXPRGdGYtOibPuN8hhdNOtB3Ln+CYGNWs\n3550tLXt1HSpeVonLQc+54dOdiN6+I2HVNp2ywcCgYACltWN0wAntpACkU+ZzqrZ\nBa0m/Sc5Gl5i1gvirGmYaSCB58rCYRMSqIklxtONOEcZ3P4tTyHls/MzEuRn9QCo\n4dOtA4SKLc9Wy3AER5WT8RjETxfnK4AYjRa+oRV4YgE98wNYSI83ZNvTm6zp7aKr\nm5jTgqYGSL3KTGKGPkPC5g==\n-----END PRIVATE KEY-----\n",
+	"client_email": "firebase-adminsdk-muak1@obinsun-merch.iam.gserviceaccount.com",
+	"client_id": "103391125461611495313",
+	"auth_uri": "https://accounts.google.com/o/oauth2/auth",
+	"token_uri": "https://oauth2.googleapis.com/token",
+	"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+	"client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-muak1%40obinsun-merch.iam.gserviceaccount.com"
+}
