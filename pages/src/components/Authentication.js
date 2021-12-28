@@ -1,9 +1,9 @@
 import { useState, useRef } from "react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 async function createUser(email, password) {
-	const response = await fetch("/api/auth/register", {
+	const response = await fetch("/api/auth/signin", {
 		method: "POST",
 		body: JSON.stringify({ email, password }),
 		headers: {
@@ -12,7 +12,7 @@ async function createUser(email, password) {
 	});
 
 	const data = await response.json();
-
+	console.log(response);
 	if (!response.ok) {
 		throw new Error(data.message || "Something went wrong!");
 	}
@@ -21,6 +21,11 @@ async function createUser(email, password) {
 }
 
 function Authentication() {
+	const { data: session, status } = useSession();
+	const loading = status === "loading";
+
+	console.log("session", session);
+
 	const emailInputRef = useRef();
 	const passwordInputRef = useRef();
 
@@ -31,8 +36,8 @@ function Authentication() {
 		setIsLogin((prevState) => !prevState);
 	}
 
-	async function submitHandler(event) {
-		event.preventDefault();
+	async function submitHandler(e) {
+		e.preventDefault();
 
 		const enteredEmail = emailInputRef.current.value;
 		const enteredPassword = passwordInputRef.current.value;
@@ -44,11 +49,15 @@ function Authentication() {
 				redirect: false,
 				email: enteredEmail,
 				password: enteredPassword,
+				callbackUrl: "http://localhost:3000/",
 			});
 
 			if (!result.error) {
 				// set some auth state
-				router.replace("/dashboard");
+				if (session) {
+					// router.replace("/");
+					router.push("/");
+				} else return;
 			}
 		} else {
 			try {
@@ -58,6 +67,9 @@ function Authentication() {
 				console.log(error);
 			}
 		}
+
+		// console.log("session", status);
+		// console.log("session", session);
 	}
 
 	return (
@@ -118,7 +130,13 @@ function Authentication() {
 								<input
 									className="input border-bottom-right-glass text-[#666] bg-white max-w-[100px] cursor-pointer mb-[20px] font-semibold"
 									type="submit"
-									value="Login"
+									// value="Login"
+									value={isLogin ? "Login" : "Register"}
+									// onClick={() => router.push("/dashboard")}
+									// onClick={() => {
+									// 	signIn({ session });
+									// 	router.push("/dashboard");
+									// }}
 								/>
 							</div>
 							{/* <p className="mt-[5px] text-white">
@@ -129,7 +147,7 @@ function Authentication() {
 							</p> */}
 							<p className="mt-[5px] text-white">
 								Already Have An Account?{" "}
-								{isLogin ? "Login" : "Register Now!"}
+								{isLogin ? "Login " : "Register Now! "}
 								<a
 									className="font-semibold"
 									onClick={switchAuthModeHandler}

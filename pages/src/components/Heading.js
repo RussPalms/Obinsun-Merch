@@ -9,7 +9,7 @@ import { BiCart } from "react-icons/bi";
 import { useRouter } from "next/router";
 // import { useSelector } from "react-redux";
 import Link from "next/link";
-import { useSession, signOut } from "next-auth/react";
+import { useSession, signOut, getSession } from "next-auth/react";
 
 function Heading() {
 	// const [session, loading] = useSession();
@@ -19,11 +19,11 @@ function Heading() {
 	// const users = useSelector(selectUsers);
 
 	function logStateHandler() {
-		if (!session) {
-			router.push("/authenticate");
-		} else {
-			signOut();
-		}
+		// if (!session) {
+		// 	router.push("/authenticate");
+		// } else {
+		signOut({ session });
+		// }
 	}
 
 	return (
@@ -57,11 +57,31 @@ function Heading() {
 						<h2
 							className="rounded-full bg-gray-100 text-black p-2 cursor-pointer whitespace-nowrap select-none mx-1"
 							// onClick={!session ? signIn : signOut}
-							onClick={logStateHandler}
+							// onClick={logStateHandler}
 						>
-							{session ? "Logout" : "Login"}
+							<Link href="/authenticate">
+								{/* {!session && !loading ? "Login" : "Logout"} */}
+								{!session ? "Login" : "Logout"}
+							</Link>
 						</h2>
 						{/* // )} */}
+						{/* {session && (
+							<h2
+								className="rounded-full bg-gray-100 text-black p-2 cursor-pointer whitespace-nowrap select-none mx-1"
+								// onClick={!session ? signIn : signOut}
+							>
+								<Link href="/dashboard">Dashboard</Link>
+							</h2>
+						)} */}
+						{/* {session && (
+							<h2
+								className="rounded-full bg-gray-100 text-black p-2 cursor-pointer whitespace-nowrap select-none mx-1"
+							>
+								<button onClick={logStateHandler}>
+									Logout
+								</button>
+							</h2>
+						)} */}
 
 						<MdOutlineBookmarkBorder className="h-6 w-6 cursor-pointer mx-2" />
 						<BiCart className=" h-6 w-6 cursor-pointer mx-2" />
@@ -77,3 +97,13 @@ function Heading() {
 }
 
 export default Heading;
+
+export async function getServerSideProps(context) {
+	const session = await getSession(context);
+
+	return {
+		props: {
+			session,
+		},
+	};
+}

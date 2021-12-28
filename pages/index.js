@@ -1,4 +1,4 @@
-import { getSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import Head from "next/head";
 import Designs from "./src/components/Designs";
 import Design from "./src/components/Design";
@@ -13,6 +13,10 @@ import Login from "./src/components/Login";
 // import { useEffect } from "react";
 
 export default function Home() {
+	const { data: session } = useSession();
+
+	console.log("session", session);
+
 	// const user = useSelector(selectUser);
 	// const dispatch = useDispatch();
 
