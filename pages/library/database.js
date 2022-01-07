@@ -10,21 +10,28 @@ import "firebase/compat/firestore";
 // import { firebaseConfig } from "../../firebase";
 import { firebaseConfig } from "../../firebase";
 
-// export async function connectToFirebase() {
-// const app = initializeApp(firebaseConfig);
-// const db = await getFirestore(app);
-const app = !firebase.apps.length
-	? firebase.initializeApp(firebaseConfig)
-	: firebase.app();
+export async function connectToFirebase() {
+	// const app = initializeApp(firebaseConfig);
+	// const db = await getFirestore(app);
+	const app = !firebase.apps.length
+		? firebase.initializeApp(firebaseConfig)
+		: firebase.app();
 
-// const db = app.firestore();
-// const storage = firebase.storage();
+	// const db = app.firestore();
+	// const storage = firebase.storage();
 
-const databaseConnect = app.firestore();
-// const databaseConnect = app
-const storageConnect = firebase.storage();
+	const databaseConnect = await app.firestore();
+	// const databaseConnect = app
+	const storageConnect = firebase.storage();
 
-// return;
-// }
+	return databaseConnect;
+}
 
-export { databaseConnect, storageConnect };
+// export { databaseConnect, storageConnect };
+
+// import { Firestore } from "@google-cloud/firestore";
+
+// export const db = new Firestore({
+// 	projectId: process.env.PROJECT_ID,
+// 	keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+// });

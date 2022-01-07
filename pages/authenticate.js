@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import Authentication from "./src/components/Authentication";
 
 function Authenticate() {
-	const { data: session } = useSession();
+	// const { data: session } = useSession();
 
-	console.log("session", session);
+	// console.log("session", session);
 
 	const [isLoading, setIsLoading] = useState(true);
 	const router = useRouter();

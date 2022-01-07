@@ -1,83 +1,42 @@
-import { useState, useRef } from "react";
-import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-// import { connectToFirebase } from "../../library/database";
+import { useRef } from "react";
 
-async function createUser(email, password) {
-	const response = await fetch("/api/auth/signin", {
-		method: "POST",
-		body: JSON.stringify({ email, password }),
-		headers: {
-			"Content-Type": "application/json",
-		},
-	});
+function Dashboard() {
+	async function changePasswordHandler(passwordData) {
+		const response = await fetch("/api/user/change-password", {
+			method: "PATCH",
+			body: JSON.stringify(passwordData),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
 
-	const userData = await response.json();
-	// console.log(userData);
-	// console.log(userData);
-	if (!response.ok) {
-		throw new Error(userData.message || "Something went wrong!");
+		const data = await response.json();
+
+		console.log(data);
 	}
 
-	return userData;
-}
+	const oldPasswordRef = useRef();
+	const newPasswordRef = useRef();
 
-function Authentication() {
-	// db = connectToFirebase();
+	// onChangePassword = { changePasswordHandler };
 
-	// console.log(data);
+	function submitHandler({
+		event,
+		onChangePassword = { changePasswordHandler },
+	}) {
+		event.preventDefault();
 
-	const { data: session, status } = useSession();
-	const loading = status === "loading";
-
-	// console.log("session", session);
-
-	const emailInputRef = useRef();
-	const passwordInputRef = useRef();
-
-	const [isLogin, setIsLogin] = useState(true);
-	const router = useRouter();
-
-	function switchAuthModeHandler() {
-		setIsLogin((prevState) => !prevState);
-	}
-
-	async function submitHandler(e) {
-		e.preventDefault();
-
-		const enteredEmail = emailInputRef.current.value;
-		const enteredPassword = passwordInputRef.current.value;
+		const enteredOldPassword = oldPasswordRef.current.value;
+		const enteredNewPassword = newPasswordRef.current.value;
 
 		// optional: Add validation
 
-		if (isLogin) {
-			const result = await signIn("credentials", {
-				redirect: false,
-				email: enteredEmail,
-				password: enteredPassword,
-				// callbackUrl: "http://localhost:3000/",
-			});
-
-			// console.log(result);
-
-			if (!result.error) {
-				// set some auth state
-				// if (session) {
-				router.replace("/dashboard");
-				// router.push("/");
-				// } else return;
-			}
-		} else {
-			try {
-				const result = await createUser(enteredEmail, enteredPassword);
-				// console.log(result);
-			} catch (error) {
-				console.log(error);
-			}
-		}
-
-		// console.log("session", status);
-		// console.log("session", session);
+		// changePasswordHandler(
+		onChangePassword({
+			oldPassword: enteredOldPassword,
+			newPassword: enteredNewPassword,
+		});
+		// );
 	}
 
 	return (
@@ -109,18 +68,18 @@ function Authentication() {
 				<div className="relative top-0 left-0 w-[400px] min-h-[400px] bg-white/10 border rounded-[10px] flex justify-center align-center backdrop-blur-[5px] shadow-glass3 border-bottom-right-glass border-white/50">
 					<div className="relative w-full h-full p-[40px]">
 						<h2 className="relative text-white text-[24px] font-semibold tracking-[1px] mb-[40px] before:absolute before:left-0 before:bottom-[-10px] before:w-[80px] before:h-[4px] before:bg-white">
-							{isLogin ? "Login" : "Register"} Form
+							Password Form
 						</h2>
 						<form onSubmit={submitHandler}>
 							<div className="inputBox">
 								{/* <label htmlFor='email'>Your Email</label> */}
 								<input
 									className="input border-bottom-right-glass"
-									type="email"
-									placeholder="E-Mail"
-									id="email"
+									type="password"
+									placeholder="new password"
+									id="new-password"
 									required
-									ref={emailInputRef}
+									ref={newPasswordRef}
 								/>
 							</div>
 							<div className="inputBox">
@@ -128,10 +87,10 @@ function Authentication() {
 								<input
 									className="input border-bottom-right-glass"
 									type="password"
-									placeholder="Password"
-									id="password"
+									placeholder="old password"
+									id="old-password"
 									required
-									ref={passwordInputRef}
+									ref={oldPasswordRef}
 								/>
 							</div>
 							<div className="inputBox">
@@ -139,7 +98,7 @@ function Authentication() {
 									className="input border-bottom-right-glass text-[#666] bg-white max-w-[100px] cursor-pointer mb-[20px] font-semibold"
 									type="submit"
 									// value="Login"
-									value={isLogin ? "Login" : "Register"}
+									value="Change Password"
 									// onClick={() => router.push("/dashboard")}
 									// onClick={() => {
 									// 	signIn({ session });
@@ -153,18 +112,6 @@ function Authentication() {
 									Click Here
 								</a>
 							</p> */}
-							<p className="mt-[5px] text-white">
-								Already Have An Account?{" "}
-								{isLogin ? "Login " : "Register Now! "}
-								<a
-									className="font-semibold"
-									onClick={switchAuthModeHandler}
-								>
-									{isLogin
-										? "Create new account"
-										: "Signin with existing account"}
-								</a>
-							</p>
 						</form>
 					</div>
 				</div>
@@ -173,4 +120,4 @@ function Authentication() {
 	);
 }
 
-export default Authentication;
+export default Dashboard;

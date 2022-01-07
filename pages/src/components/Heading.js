@@ -10,21 +10,27 @@ import { useRouter } from "next/router";
 // import { useSelector } from "react-redux";
 import Link from "next/link";
 import { useSession, signOut, getSession } from "next-auth/react";
+import { useState } from "react";
 
 function Heading() {
 	// const [session, loading] = useSession();
 	const { data: session, status } = useSession();
-	const loading = status === "loading";
+	// const [isLoading, setIsLoading] = useState(true);
+	// const loading = status === "loading";
 	const router = useRouter();
 	// const users = useSelector(selectUsers);
 
 	function logStateHandler() {
-		// if (!session) {
-		// 	router.push("/authenticate");
-		// } else {
-		signOut({ session });
-		// }
+		if (!session) {
+			router.push("/authenticate");
+		} else {
+			signOut();
+		}
 	}
+
+	// if (isLoading) {
+	// 	return <p>Loading...</p>;
+	// }
 
 	return (
 		<section className="font-grandstander md:py-[50px] md:px-[20px] flex justify-center items-center h-screen bg-gray-600 bg-cover bg-center bg-fixed p-16">
@@ -57,12 +63,12 @@ function Heading() {
 						<h2
 							className="rounded-full bg-gray-100 text-black p-2 cursor-pointer whitespace-nowrap select-none mx-1"
 							// onClick={!session ? signIn : signOut}
-							// onClick={logStateHandler}
+							onClick={logStateHandler}
 						>
-							<Link href="/authenticate">
-								{/* {!session && !loading ? "Login" : "Logout"} */}
-								{!session ? "Login" : "Logout"}
-							</Link>
+							{/* <Link> */}
+							{/* {!session && !loading ? "Login" : "Logout"} */}
+							{!session ? "Login" : "Logout"}
+							{/* </Link> */}
 						</h2>
 						{/* // )} */}
 						{/* {session && (

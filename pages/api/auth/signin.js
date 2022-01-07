@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { hashPassword } from "../../library/authentication";
-// import { connectToFirebase } from "../../library/database";
-import { databaseConnect } from "../../library/database";
+import { connectToFirebase } from "../../library/database";
+// import { databaseConnect } from "../../library/database";
+// import { databaseConnect } from "../../library/database";
 // import { databaseConnect } from "../../library/database/connectToFirebase";
 // import * as admin from "firebase-admin";
 
@@ -35,6 +37,8 @@ import { databaseConnect } from "../../library/database";
 //   }
 
 async function handler(req, res) {
+	// const [userDetails, setUserDetails] = useState("");
+
 	if (req.method !== "POST") {
 		return;
 	}
@@ -58,7 +62,8 @@ async function handler(req, res) {
 
 	// const adminInstance = firebaseAdmin.firestore();
 	// const client = adminInstance();
-	const client = await databaseConnect;
+	// const client = await databaseConnect;
+	const client = await connectToFirebase();
 	// const client = await adminInstance;
 	// const client = await databaseConnect;
 	const db = client;
@@ -95,12 +100,54 @@ async function handler(req, res) {
 
 	const result = await db
 		.collection("users")
-		.doc(email)
+		// .doc()
 		// .doc(email)
-		.set({
+		// .set({
+		// 	email: email,
+		// 	password: hashedPassword,
+		// });
+		.add({
 			email: email,
 			password: hashedPassword,
 		});
+
+	// const getUser = await db
+	// 	// .collection(`users/${email}`)
+	// 	.collection("users")
+	// 	// .doc()
+	// 	// .where("email", "=", email)
+	// 	.doc(email)
+	// 	.get()
+
+	// 	.then((snapshot) => console.log(snapshot.data()));
+	// console.log(getUser);
+	// console.lot(userDetails);
+
+	// .then(function (querySnapshot) {
+	// 	return querySnapshot.docs.map((doc) => {
+	// 		Object.assign(doc.data(), {
+	// 			id: doc.id,
+	// 		});
+	// 	});
+	// });
+
+	// .then((querySnapshot) => {
+	// 	if (querySnapshot.empty) {
+	// 		res.send("user not created");
+	// 	} else {
+	// 		var userDocs = querySnapshot.docs.map((doc) => doc.data());
+	// 		console.log("User document data: ", userDocs);
+	// 	}
+	// 	// res.end(
+	// 	// 	JSON.stringify({
+	// 	// 		email: email,
+	// 	// 		password: password,
+	// 	// 	})
+	// 	// );
+	// });
+
+	// .then(console.log(data))
+	// console.log(data);
 
 	res.status(201).json({ message: "Created user!" });
 

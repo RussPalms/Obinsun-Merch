@@ -11,8 +11,9 @@ import { FirebaseAdapter } from "@next-auth/firebase-adapter";
 // import { useSelector } from "react-redux";
 
 import { verifyPassword } from "../../library/authentication";
-// import { connectToFirebase } from "../../library/database";
-import { databaseConnect } from "../../library/database";
+import { connectToFirebase } from "../../library/database";
+// import { databaseConnect } from "../../library/database";
+// import { databaseConnect } from "../../library/database";
 // import { firebaseApp } from "../../library/database";
 // import { databaseConnect } from "../../library/database/connectToFirebase";
 
@@ -45,16 +46,20 @@ export default NextAuth({
 			// },
 			// async authorize(credentials) {
 			authorize: async (credentials, req) => {
+				// console.log(credentials.email);
 				//Get all the users
 				// const users = await db().collection("users");
 				//Find user with the email
 				// .doc(user.uid).get().collection('email')
-				// const client = await connectToFirebase().databaseConnect();
-				const client = await databaseConnect;
+				const client = await connectToFirebase();
+				// const client = await databaseConnect;
 
-				const firestoreCollection = client.collection();
+				const firestoreCollection = client.collection("users");
 
-				const user = await firestoreCollection("users")
+				// const userRef =
+
+				// console.log(firestoreCollection);
+				const user = await firestoreCollection
 					// .doc("email")
 					// .doc(credentials.email)
 					.where(
@@ -63,11 +68,51 @@ export default NextAuth({
 						"==",
 						credentials.email
 						// { email: credentials.email }
-					);
-				// .get();
+					)
+					.get()
+
+					.then((query) => {
+						// console.log(query.data());
+						// res.status(200).json(query);
+
+						// let data = query.data();
+						// return data;
+						// console.log(data);
+
+						let data = query.docs.map((doc) => {
+							let x = doc.data();
+							x["_id"] = doc.id;
+							return x;
+						});
+
+						const userData = data[0];
+
+						return userData;
+						console.log(userData);
+						// console.log(data[0]);
+						// res.status(200).json(data[0]);
+
+						// var docs = query.docs.map((doc) => doc.data());
+						// console.log("Document data:", docs);
+					});
+				// console.log(userData);
+				console.log(user);
+				// .then(res.status(200).json(data));
+
+				// .then(function (querySnapshot) {
+				// 	return querySnapshot.docs.map((doc) =>
+				// 		Object.assign(doc.data(), { email: doc.email })
+				// 	);
+				// });
+
+				// .then((snapshot) => console.log(snapshot.data()));
+				// .then(res.status(200).json(snapshot));
+
+				// console.log(snapshot);
 				// .then(function (querySnapshot) {
 				// 	querySnapshot.forEach(function (doc) {
-				// 		return doc.id, ":", doc.data();
+				// 		return doc.email, ":", doc.data();
+				// 		console.log(doc.data);
 				// 	});
 				// });
 
@@ -144,7 +189,7 @@ export default NextAuth({
 	// 	secret: process.env.NEXTAUTH_SECRET,
 	// 	entryption: true,
 	// },
-	adapter: FirebaseAdapter({ databaseConnect }),
+	// adapter: FirebaseAdapter({ databaseConnect }),
 	// pages: {
 	// 	signIn: "../authenticate",
 	// },
