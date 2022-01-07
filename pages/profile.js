@@ -1,5 +1,4 @@
 import { getSession } from "next-auth/react";
-// import Dashboard from "./src/components/Dashboard";
 import UserProfile from "./src/components/Profile/UserProfile";
 
 function dashboard() {

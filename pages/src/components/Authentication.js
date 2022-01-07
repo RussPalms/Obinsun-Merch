@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-// import { connectToFirebase } from "../../library/database";
 
 async function createUser(email, password) {
 	const response = await fetch("/api/auth/signin", {
@@ -13,8 +12,6 @@ async function createUser(email, password) {
 	});
 
 	const userData = await response.json();
-	// console.log(userData);
-	// console.log(userData);
 	if (!response.ok) {
 		throw new Error(userData.message || "Something went wrong!");
 	}
@@ -23,14 +20,8 @@ async function createUser(email, password) {
 }
 
 function Authentication() {
-	// db = connectToFirebase();
-
-	// console.log(data);
-
 	const { data: session, status } = useSession();
 	const loading = status === "loading";
-
-	// console.log("session", session);
 
 	const emailInputRef = useRef();
 	const passwordInputRef = useRef();
@@ -55,29 +46,18 @@ function Authentication() {
 				redirect: false,
 				email: enteredEmail,
 				password: enteredPassword,
-				// callbackUrl: "http://localhost:3000/",
 			});
 
-			// console.log(result);
-
 			if (!result.error) {
-				// set some auth state
-				// if (session) {
 				router.replace("/dashboard");
-				// router.push("/");
-				// } else return;
 			}
 		} else {
 			try {
 				const result = await createUser(enteredEmail, enteredPassword);
-				// console.log(result);
 			} catch (error) {
 				console.log(error);
 			}
 		}
-
-		// console.log("session", status);
-		// console.log("session", session);
 	}
 
 	return (
@@ -138,21 +118,9 @@ function Authentication() {
 								<input
 									className="input border-bottom-right-glass text-[#666] bg-white max-w-[100px] cursor-pointer mb-[20px] font-semibold"
 									type="submit"
-									// value="Login"
 									value={isLogin ? "Login" : "Register"}
-									// onClick={() => router.push("/dashboard")}
-									// onClick={() => {
-									// 	signIn({ session });
-									// 	router.push("/dashboard");
-									// }}
 								/>
 							</div>
-							{/* <p className="mt-[5px] text-white">
-								Forgot Password?{" "}
-								<a className="font-semibold" href="#">
-									Click Here
-								</a>
-							</p> */}
 							<p className="mt-[5px] text-white">
 								Already Have An Account?{" "}
 								{isLogin ? "Login " : "Register Now! "}

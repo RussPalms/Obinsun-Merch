@@ -46,21 +46,9 @@ function ProfileForm(props) {
 				<input
 					className="input border-bottom-right-glass text-[#666] bg-white max-w-[100px] cursor-pointer mb-[20px] font-semibold"
 					type="submit"
-					// value="Login"
 					value="Change Password"
-					// onClick={() => router.push("/dashboard")}
-					// onClick={() => {
-					// 	signIn({ session });
-					// 	router.push("/dashboard");
-					// }}
 				/>
 			</div>
-			{/* <p className="mt-[5px] text-white">
-								Forgot Password?{" "}
-								<a className="font-semibold" href="#">
-									Click Here
-								</a>
-							</p> */}
 		</form>
 	);
 }
