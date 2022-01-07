@@ -9,7 +9,7 @@ export async function connectToFirebase() {
 		: firebase.app();
 
 	const databaseConnect = await app.firestore();
-	const storageConnect = firebase.storage();
+	// const storageConnect = firebase.storage();
 
-	return databaseConnect, storageConnect;
+	return databaseConnect;
 }

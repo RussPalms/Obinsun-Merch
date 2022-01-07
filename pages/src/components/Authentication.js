@@ -49,7 +49,7 @@ function Authentication() {
 			});
 
 			if (!result.error) {
-				router.replace("/dashboard");
+				router.replace("/profile");
 			}
 		} else {
 			try {
