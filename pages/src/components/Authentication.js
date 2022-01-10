@@ -2,10 +2,10 @@ import { useState, useRef } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
-async function createUser(email, password) {
+async function createUser(email, password, role) {
 	const response = await fetch("/api/auth/signin", {
 		method: "POST",
-		body: JSON.stringify({ email, password }),
+		body: JSON.stringify({ email, password, role }),
 		headers: {
 			"Content-Type": "application/json",
 		},
@@ -20,11 +20,13 @@ async function createUser(email, password) {
 }
 
 function Authentication() {
-	const { data: session, status } = useSession();
-	const loading = status === "loading";
+	// const { data: session, status } = useSession();
+	// const loading = status === "loading";
+	// console.log(session)
 
 	const emailInputRef = useRef();
 	const passwordInputRef = useRef();
+	const roleInputRef = useRef();
 
 	const [isLogin, setIsLogin] = useState(true);
 	const router = useRouter();
@@ -46,6 +48,7 @@ function Authentication() {
 				redirect: false,
 				email: enteredEmail,
 				password: enteredPassword,
+				// role: enteredRole,
 			});
 
 			if (!result.error) {
@@ -53,7 +56,13 @@ function Authentication() {
 			}
 		} else {
 			try {
-				const result = await createUser(enteredEmail, enteredPassword);
+				const enteredRole = roleInputRef.current.value;
+
+				const result = await createUser(
+					enteredEmail,
+					enteredPassword,
+					enteredRole
+				);
 			} catch (error) {
 				console.log(error);
 			}
@@ -114,6 +123,22 @@ function Authentication() {
 									ref={passwordInputRef}
 								/>
 							</div>
+							{isLogin ? (
+								""
+							) : (
+								<div className="inputBox">
+									{/* <label htmlFor='email'>Your Email</label> */}
+									<input
+										className="input border-bottom-right-glass"
+										type="text"
+										placeholder="Role"
+										id="role"
+										required
+										ref={roleInputRef}
+									/>
+								</div>
+							)}
+
 							<div className="inputBox">
 								<input
 									className="input border-bottom-right-glass text-[#666] bg-white max-w-[100px] cursor-pointer mb-[20px] font-semibold"

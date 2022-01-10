@@ -3,7 +3,7 @@ import { getSession } from "next-auth/react";
 import { hashPassword, verifyPassword } from "../../library/authentication";
 import { connectToFirebase } from "../../library/database";
 
-async function handler(req, res) {
+async function passwordHandler(req, res) {
 	if (req.method !== "PATCH") {
 		return;
 	}
@@ -37,7 +37,6 @@ async function handler(req, res) {
 
 			return userData;
 		});
-	console.log(user);
 
 	if (!user) {
 		res.status(404).json({ message: "User not found." });
@@ -66,4 +65,4 @@ async function handler(req, res) {
 	res.status(200).json({ message: "Password updated!" });
 }
 
-export default handler;
+export default passwordHandler;

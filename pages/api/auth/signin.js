@@ -1,5 +1,6 @@
 import { hashPassword } from "../../library/authentication";
 import { connectToFirebase } from "../../library/database";
+
 async function handler(req, res) {
 	if (req.method !== "POST") {
 		return;
@@ -7,7 +8,7 @@ async function handler(req, res) {
 
 	const data = req.body;
 
-	const { email, password } = data;
+	const { email, password, role } = data;
 
 	if (
 		!email ||
@@ -44,6 +45,7 @@ async function handler(req, res) {
 	const result = await db.collection("users").add({
 		email: email,
 		password: hashedPassword,
+		role: role,
 	});
 
 	res.status(201).json({ message: "Created user!" });
